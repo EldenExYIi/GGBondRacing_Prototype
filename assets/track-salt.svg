@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680">
+  <defs>
+    <linearGradient id="p" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffe5fb"/>
+      <stop offset=".45" stop-color="#aee8ff"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <rect width="1200" height="680" fill="url(#p)"/>
+  <g opacity=".65" filter="url(#soft)">
+    <circle cx="205" cy="145" r="78" fill="#ff9be8"/>
+    <circle cx="480" cy="105" r="54" fill="#ffffff"/>
+    <circle cx="885" cy="160" r="88" fill="#80d7ff"/>
+  </g>
+  <path d="M0 350c260 70 430 68 610 0 210-80 385-70 590 30v300H0z" fill="#f9feff" opacity=".82"/>
+  <path d="M0 530c220-96 388-82 560 22 145 88 344 88 640-56v184H0z" fill="#202737"/>
+  <path d="M0 548c214-92 388-76 555 24 148 89 349 86 645-58" fill="none" stroke="#ff63d8" stroke-width="10"/>
+  <g fill="#fff" stroke="#95dfff" stroke-width="4" opacity=".85">
+    <path d="M105 455l28-46h54l28 46-28 46h-54z"/>
+    <path d="M910 405l22-38h44l22 38-22 38h-44z"/>
+    <path d="M760 520l18-31h36l18 31-18 31h-36z"/>
+  </g>
+</svg>
