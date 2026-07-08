@@ -920,7 +920,7 @@
     }
 
     .track-main::after {
-      content: "点击进入局内";
+      content: "点击进入准备";
       position: absolute;
       left: 50%;
       top: 50%;
@@ -2635,28 +2635,213 @@
     }
 
     .road-motion {
-      left: 27% !important;
-      right: 27% !important;
+      left: 16% !important;
+      right: 16% !important;
       top: 31% !important;
       bottom: -6% !important;
       height: auto !important;
       opacity: 1 !important;
-      clip-path: polygon(45% 0, 55% 0, 100% 100%, 0 100%) !important;
+      clip-path: polygon(39% 0, 61% 0, 100% 100%, 0 100%) !important;
       background:
-        linear-gradient(90deg, #f3d65f 0 4%, transparent 4% 47%, rgba(255,255,255,.88) 49% 51%, transparent 53% 96%, #f3d65f 96% 100%),
-        linear-gradient(180deg, #333c48 0%, #171e2b 100%) !important;
+        linear-gradient(180deg, #404852 0%, #222936 42%, #111722 100%) !important;
       box-shadow: 0 24px 42px rgba(2, 8, 24, .34) !important;
       transform: none !important;
       z-index: 1 !important;
     }
 
     .road-motion::before {
-      content: "" !important;
-      position: absolute !important;
-      inset: 0 !important;
-      background:
-        repeating-linear-gradient(180deg, transparent 0 64px, rgba(255,255,255,.78) 64px 80px, transparent 80px 144px) !important;
-      opacity: .58 !important;
+      display: none !important;
+    }
+
+    #main .nav-list .primary,
+    #main .daily .green,
+    #difficulty .green,
+    #difficulty .primary {
+      color: #fff !important;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, .46) !important;
+    }
+
+    .main-setting-corner {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      padding: 0 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .task-status {
+      width: 176px;
+      min-width: 176px;
+      height: 46px;
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      border: 2px solid rgba(244, 217, 132, .78);
+      border-radius: 5px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 950;
+      text-shadow: 0 2px 5px rgba(0,0,0,.42);
+      box-shadow: 4px 5px 0 rgba(5, 13, 35, .2);
+      white-space: nowrap;
+    }
+
+    button,
+    [data-go],
+    [data-toast],
+    [data-character],
+    [data-track],
+    [data-track-prev],
+    [data-track-next],
+    [data-character-prev],
+    [data-character-next],
+    [data-players],
+    [data-diff],
+    [data-start-race],
+    [data-pause],
+    [data-resume],
+    [data-unlock-nfc],
+    .track-main,
+    .selectable,
+    .task-status {
+      cursor: pointer;
+      transition:
+        filter .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease,
+        background-color .18s ease;
+      will-change: filter;
+    }
+
+    button:hover,
+    button:focus-visible,
+    [data-go]:hover,
+    [data-go]:focus-visible,
+    [data-toast]:hover,
+    [data-toast]:focus-visible,
+    [data-character]:hover,
+    [data-character]:focus-visible,
+    [data-track-prev]:hover,
+    [data-track-prev]:focus-visible,
+    [data-track-next]:hover,
+    [data-track-next]:focus-visible,
+    [data-character-prev]:hover,
+    [data-character-prev]:focus-visible,
+    [data-character-next]:hover,
+    [data-character-next]:focus-visible,
+    [data-players]:hover,
+    [data-players]:focus-visible,
+    [data-diff]:hover,
+    [data-diff]:focus-visible,
+    [data-start-race]:hover,
+    [data-start-race]:focus-visible,
+    [data-pause]:hover,
+    [data-pause]:focus-visible,
+    [data-resume]:hover,
+    [data-resume]:focus-visible,
+    [data-unlock-nfc]:hover,
+    [data-unlock-nfc]:focus-visible,
+    .track-main:hover,
+    .track-main:focus-visible,
+    .selectable:hover,
+    .selectable:focus-visible,
+    .task-status:hover,
+    .task-status:focus-visible {
+      filter: brightness(1.08) saturate(1.04);
+      border-color: rgba(255, 242, 160, .95) !important;
+      box-shadow: 8px 10px 0 rgba(5, 13, 35, .28), 0 20px 32px rgba(3, 8, 24, .24), 0 0 0 4px rgba(244, 217, 132, .16) !important;
+      outline: 0;
+    }
+
+    button:active,
+    [data-go]:active,
+    [data-toast]:active,
+    [data-character]:active,
+    [data-track-prev]:active,
+    [data-track-next]:active,
+    [data-character-prev]:active,
+    [data-character-next]:active,
+    [data-players]:active,
+    [data-diff]:active,
+    [data-start-race]:active,
+    [data-pause]:active,
+    [data-resume]:active,
+    [data-unlock-nfc]:active,
+    .track-main:active,
+    .selectable:active,
+    .task-status:active {
+      filter: brightness(.98);
+    }
+
+    .btn:hover,
+    .btn:focus-visible,
+    .btn:active,
+    .back:hover,
+    .back:focus-visible,
+    .back:active,
+    .arrow-btn:hover,
+    .arrow-btn:focus-visible,
+    .arrow-btn:active,
+    .track-arrow:hover,
+    .track-arrow:focus-visible,
+    .track-arrow:active,
+    .main-setting-corner:hover,
+    .main-setting-corner:focus-visible,
+    .main-setting-corner:active,
+    .task-status:hover,
+    .task-status:focus-visible,
+    .task-status:active {
+      transform: none !important;
+    }
+
+    .switch-showcase:hover,
+    .switch-showcase:focus-visible,
+    .switch-showcase:active {
+      transform: translateX(-50%) !important;
+    }
+
+    .task-status.claimable {
+      background: #ef5045;
+    }
+
+    .task-status.progress-status {
+      background: #2693e6;
+    }
+
+    #achievement .daily-row {
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 58px;
+    }
+
+    #achievement .daily-row > span {
+      min-width: 0;
+    }
+
+    #difficulty .diff-grid {
+      align-items: stretch !important;
+      gap: 28px !important;
+    }
+
+    #difficulty .choice-card {
+      display: grid !important;
+      grid-template-rows: auto auto 1fr auto !important;
+      min-height: 410px !important;
+      align-content: stretch !important;
+    }
+
+    #difficulty .difficulty-select-btn {
+      align-self: end !important;
+      width: 100% !important;
+      min-height: 64px !important;
+      justify-content: flex-start !important;
+      padding-left: 28px !important;
+      color: #fff !important;
+      font-size: 21px !important;
+      text-shadow: 0 2px 5px rgba(0,0,0,.42) !important;
     }
 
     @media (max-width: 900px) {
@@ -2768,7 +2953,7 @@
               <h2 class="section-title" style="margin-top:14px">其他赛道<br>元素相同</h2>
             </div>
           </aside>
-          <section class="panel track-main xlsx-frame" data-go="hud">
+          <section class="panel track-main xlsx-frame" data-go="prepare">
             <div class="track-scene" id="trackScene">
               <div class="track-top-boxes">
                 <div class="track-badge">当前星星收集数量 <b id="trackStarsBox">3/3</b></div>
@@ -2835,19 +3020,19 @@
             <div class="tag">AI 0.75x</div>
             <h2>简单</h2>
             <p class="meta">入门过弯，10% 概率失误。免费版仅开放 Track_01-02 的简单难度。</p>
-            <button class="btn green" data-start-race>进入比赛</button>
+            <button class="btn green difficulty-select-btn" data-start-race>选择难度</button>
           </article>
           <article class="choice-card selectable" data-diff="普通">
             <div class="tag">AI 0.90x</div>
             <h2>普通</h2>
             <p class="meta">85% 过弯精度，适合熟悉漂移和氮气节奏后的挑战。</p>
-            <button class="btn blue" data-start-race>进入比赛</button>
+            <button class="btn blue difficulty-select-btn" data-start-race>选择难度</button>
           </article>
           <article class="choice-card selectable" data-diff="困难">
             <div class="tag">AI 1.00x</div>
             <h2>困难</h2>
             <p class="meta">95% 最优路线，1% 概率失误。适合全改赛车和高阶连漂。</p>
-            <button class="btn red" data-start-race>进入比赛</button>
+            <button class="btn red difficulty-select-btn" data-start-race>选择难度</button>
           </article>
         </div>
       </div>
@@ -2856,7 +3041,7 @@
     <section class="screen hud-screen" id="hud">
       <div class="hud" id="hudBg">
         <div class="road-motion"></div>
-        <img class="race-car" src="assets/car-3d.png" alt="比赛中赛车" />
+        <img class="race-car" src="assets/car-rear.png" alt="比赛中赛车" />
         <div class="hud-chip mini-map">
           <svg viewBox="0 0 160 100" aria-label="小地图">
             <path d="M18 58C45 12 116 9 139 44c19 30-17 55-48 38-18-10-35-8-50 5-20 17-39-8-23-29z" fill="none" stroke="#ffdf3f" stroke-width="8" stroke-linecap="round"/>
@@ -2983,11 +3168,11 @@
             <button class="btn ghost" data-toast="已切换到每日任务分类">每日任务 <span>5项</span></button>
           </aside>
           <section class="panel pad">
-            <div class="daily-row"><span>累计完美漂移 50 次</span><b>32/50</b></div>
-            <div class="daily-row"><span>单个赛道获得 3 星</span><b>可领取</b></div>
-            <div class="daily-row"><span>解锁全部 8 赛道</span><b>5/8</b></div>
-            <div class="daily-row"><span>累计获胜 50 次</span><b>18/50</b></div>
-            <div class="daily-row"><span>今日完成 3 场比赛</span><b>2/3</b></div>
+            <div class="daily-row"><span>累计完美漂移 50 次</span><button class="task-status progress-status" data-toast="完成进度 32/50">完成进度 32/50</button></div>
+            <div class="daily-row"><span>单个赛道获得 3 星</span><button class="task-status claimable" data-toast="奖励已领取">可领取</button></div>
+            <div class="daily-row"><span>解锁全部 8 赛道</span><button class="task-status progress-status" data-toast="完成进度 5/8">完成进度 5/8</button></div>
+            <div class="daily-row"><span>累计获胜 50 次</span><button class="task-status progress-status" data-toast="完成进度 18/50">完成进度 18/50</button></div>
+            <div class="daily-row"><span>今日完成 3 场比赛</span><button class="task-status progress-status" data-toast="完成进度 2/3">完成进度 2/3</button></div>
           </section>
         </div>
       </div>
@@ -3272,7 +3457,9 @@
       }
 
       if (event.target.closest("[data-start-race]")) go("hud");
-      if (event.target.closest("[data-pause]")) $("#pauseModal").classList.remove("hidden");
+      if (event.target.closest("[data-pause]")) {
+        $("#pauseModal").classList.remove("hidden");
+      }
       if (event.target.closest("[data-resume]")) $("#pauseModal").classList.add("hidden");
       if (event.target.closest("[data-finish]")) go("result");
       const toastTarget = event.target.closest("[data-toast]");
