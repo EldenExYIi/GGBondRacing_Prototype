@@ -3024,7 +3024,7 @@
       </header>
       <div class="stage">
         <div class="diff-grid">
-          <article class="choice-card selectable selected" data-diff="简单">
+          <article class="choice-card selectable" data-diff="简单">
             <div class="tag">AI 0.75x</div>
             <h2>简单</h2>
             <p class="meta">入门过弯，10% 概率失误。免费版仅开放 Track_01-02 的简单难度。</p>
@@ -3246,7 +3246,7 @@
       character: 0,
       track: 0,
       players: 1,
-      difficulty: "简单",
+      difficulty: null,
       nfcUnlocked: false
     };
 
@@ -3299,6 +3299,7 @@
       $("#pauseModal").classList.add("hidden");
       if (screen === "track") renderTrack();
       if (screen === "prepare") renderPrepare();
+      if (screen === "difficulty") renderDifficulty();
       if (screen === "hud") renderHud();
       if (screen === "result") renderResult();
       if (screen === "upgrade") renderUpgrade();
@@ -3354,6 +3355,11 @@
           <div><b>${n}P ${ready ? "已准备" : "等待连接"}</b><p class="meta">${ready ? "确认键已绑定" : "5秒重连窗口"}</p></div>
         </div>`;
       }).join("");
+    }
+
+    function renderDifficulty() {
+      state.difficulty = null;
+      $all("[data-diff]").forEach(el => el.classList.remove("selected"));
     }
 
     function renderHud() {
