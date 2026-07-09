@@ -1359,14 +1359,6 @@
       transform: translateY(24px);
     }
 
-    .garage-actions {
-      grid-column: 1 / 2;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      align-items: center;
-    }
-
     .garage-strip {
       grid-column: 2 / 3;
       display: grid;
@@ -2852,6 +2844,372 @@
       text-shadow: 0 2px 5px rgba(0,0,0,.42) !important;
     }
 
+    .remote-focus,
+    .track-main.remote-focus,
+    .selectable.remote-focus,
+    .task-status.remote-focus {
+      z-index: 20 !important;
+      outline: 6px solid #ffe96a !important;
+      outline-offset: 5px !important;
+      border-color: #fff3a0 !important;
+      border-image: conic-gradient(
+        from var(--focusBorderSpin),
+        transparent 0deg 18deg,
+        #00e7ff 18deg 78deg,
+        #fff6a8 78deg 92deg,
+        transparent 92deg 162deg,
+        #ff3f73 162deg 222deg,
+        #fff6a8 222deg 236deg,
+        transparent 236deg 360deg
+      ) 1 !important;
+      box-shadow:
+        inset 0 0 0 999px rgba(242, 201, 76, .72),
+        0 0 0 3px #0a1024,
+        0 0 0 9px rgba(0, 231, 255, .72),
+        0 0 0 15px rgba(255, 63, 115, .46),
+        0 0 36px 13px rgba(0, 231, 255, .44),
+        0 0 46px 18px rgba(255, 63, 115, .28),
+        9px 11px 0 rgba(5, 13, 35, .34) !important;
+      filter: brightness(1.16) saturate(1.12);
+      animation:
+        remoteFocusPulse 1.05s ease-in-out infinite alternate,
+        remoteFocusBorderRun 1.35s linear infinite;
+    }
+
+    @property --focusBorderSpin {
+      syntax: "<angle>";
+      inherits: false;
+      initial-value: 0deg;
+    }
+
+    @keyframes remoteFocusBorderRun {
+      to { --focusBorderSpin: 360deg; }
+    }
+
+    @keyframes remoteFocusPulse {
+      from {
+        box-shadow:
+          inset 0 0 0 999px rgba(242, 201, 76, .62),
+          0 0 0 3px #0a1024,
+          0 0 0 8px rgba(0, 231, 255, .58),
+          0 0 0 13px rgba(255, 63, 115, .34),
+          0 0 26px 10px rgba(0, 231, 255, .32),
+          0 0 34px 14px rgba(255, 63, 115, .2),
+          9px 11px 0 rgba(5, 13, 35, .34);
+      }
+      to {
+        box-shadow:
+          inset 0 0 0 999px rgba(242, 201, 76, .82),
+          0 0 0 3px #0a1024,
+          0 0 0 11px rgba(0, 231, 255, .86),
+          0 0 0 18px rgba(255, 63, 115, .56),
+          0 0 42px 16px rgba(0, 231, 255, .52),
+          0 0 56px 22px rgba(255, 63, 115, .36),
+          9px 11px 0 rgba(5, 13, 35, .34);
+      }
+    }
+
+    .btn.remote-focus,
+    .back.remote-focus,
+    .arrow-btn.remote-focus,
+    .track-arrow.remote-focus,
+    .avatar.remote-focus,
+    .garage-thumb.remote-focus,
+    .task-status.remote-focus,
+    .difficulty-select-btn.remote-focus {
+      background-color: #f2c94c !important;
+      color: #14203a !important;
+      text-shadow: none !important;
+    }
+
+    .remote-focus small,
+    .remote-focus span,
+    .remote-focus b {
+      color: inherit !important;
+    }
+
+    button.remote-focus,
+    button.remote-focus:hover,
+    button.remote-focus:focus-visible,
+    [tabindex].remote-focus,
+    [tabindex].remote-focus:hover,
+    [tabindex].remote-focus:focus-visible,
+    .track-main.remote-focus,
+    .track-main.remote-focus:hover,
+    .track-main.remote-focus:focus-visible {
+      outline: 6px solid #ffe96a !important;
+      outline-offset: 5px !important;
+      border-color: #fff3a0 !important;
+      border-image: conic-gradient(
+        from var(--focusBorderSpin),
+        transparent 0deg 18deg,
+        #00e7ff 18deg 78deg,
+        #fff6a8 78deg 92deg,
+        transparent 92deg 162deg,
+        #ff3f73 162deg 222deg,
+        #fff6a8 222deg 236deg,
+        transparent 236deg 360deg
+      ) 1 !important;
+      box-shadow:
+        inset 0 0 0 999px rgba(242, 201, 76, .78),
+        0 0 0 3px #0a1024,
+        0 0 0 11px rgba(0, 231, 255, .82),
+        0 0 0 18px rgba(255, 63, 115, .52),
+        0 0 42px 16px rgba(0, 231, 255, .5),
+        0 0 56px 22px rgba(255, 63, 115, .34),
+        9px 11px 0 rgba(5, 13, 35, .34) !important;
+      filter: brightness(1.16) saturate(1.12) !important;
+    }
+
+    .btn.remote-focus,
+    .btn.remote-focus:hover,
+    .btn.remote-focus:focus-visible,
+    .primary.remote-focus,
+    .primary.remote-focus:hover,
+    .primary.remote-focus:focus-visible,
+    .blue.remote-focus,
+    .blue.remote-focus:hover,
+    .blue.remote-focus:focus-visible,
+    .red.remote-focus,
+    .red.remote-focus:hover,
+    .red.remote-focus:focus-visible,
+    .green.remote-focus,
+    .green.remote-focus:hover,
+    .green.remote-focus:focus-visible,
+    .ghost.remote-focus,
+    .ghost.remote-focus:hover,
+    .ghost.remote-focus:focus-visible,
+    .back.remote-focus,
+    .back.remote-focus:hover,
+    .back.remote-focus:focus-visible,
+    .arrow-btn.remote-focus,
+    .track-arrow.remote-focus,
+    .avatar.remote-focus,
+    .garage-thumb.remote-focus,
+    .task-status.remote-focus,
+    .difficulty-select-btn.remote-focus {
+      background: #f2c94c !important;
+      background-image: none !important;
+      color: #14203a !important;
+      text-shadow: none !important;
+    }
+
+    .choice-card.locked,
+    .track-main.locked {
+      opacity: .68;
+      filter: grayscale(.2);
+    }
+
+    .track-main.locked::after {
+      content: "未解锁";
+      opacity: 1;
+      background: #ef5045;
+    }
+
+    .track-main::after {
+      content: "点击选择车辆";
+    }
+
+    .result-rank-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      align-content: center;
+      overflow: auto;
+      padding: 18px;
+    }
+
+    .rank-row {
+      min-height: 66px;
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 3px solid rgba(244, 217, 132, .7);
+      background: rgba(16, 29, 60, .82);
+      box-shadow: 5px 6px 0 rgba(5, 13, 35, .24);
+      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+      font-weight: 950;
+    }
+
+    .rank-row.player {
+      background: #f2c94c;
+      color: #14203a;
+      text-shadow: none;
+    }
+
+    .rank-row .rank-no {
+      font-size: 26px;
+      color: #fff0b8;
+      text-align: center;
+    }
+
+    .rank-row.player .rank-no { color: #14203a; }
+
+    .rank-row small {
+      display: block;
+      margin-top: 3px;
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+    }
+
+    .rank-row.player small { color: rgba(20, 32, 58, .72); }
+
+    .upgrade-row {
+      display: grid;
+      grid-template-columns: 96px 1fr 82px 118px;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+      padding: 8px;
+      border: 2px solid rgba(244, 217, 132, .42);
+      background: rgba(16, 29, 60, .48);
+      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    }
+
+    .upgrade-row .btn {
+      min-height: 42px;
+      padding: 6px 10px;
+      justify-content: center;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .upgrade-row .btn:disabled {
+      cursor: not-allowed;
+      opacity: .46;
+      filter: grayscale(.35);
+    }
+
+    .player-choice.selected {
+      background-color: #f2c94c !important;
+      color: #14203a !important;
+      text-shadow: none !important;
+    }
+
+    #upgrade .garage-info {
+      grid-template-columns: minmax(340px, 32%) minmax(0, 1fr) !important;
+      grid-template-rows: minmax(0, 1fr) 116px !important;
+      gap: 10px 18px !important;
+      padding: 16px 18px 12px !important;
+      overflow: hidden !important;
+    }
+
+    #upgrade .garage-stats {
+      align-self: start !important;
+      gap: 10px !important;
+      padding-left: 0 !important;
+      padding-top: 8px !important;
+    }
+
+    #upgrade .garage-name {
+      font-size: clamp(30px, 3.4vw, 48px) !important;
+      margin-bottom: 6px;
+    }
+
+    #upgrade .upgrade-row {
+      min-height: 58px !important;
+      margin: 6px 0 !important;
+      padding: 6px 8px !important;
+      grid-template-columns: 82px 1fr 58px 96px !important;
+      gap: 8px !important;
+    }
+
+    #upgrade .upgrade-row .btn {
+      min-height: 38px !important;
+      font-size: 12px !important;
+      padding: 4px 8px !important;
+    }
+
+    #upgrade .garage-car {
+      align-self: center !important;
+      min-height: 0 !important;
+    }
+
+    #upgrade .garage-car img {
+      width: min(86%, 660px) !important;
+      max-height: 420px !important;
+      transform: translateY(0) !important;
+    }
+
+    .garage-strip {
+      grid-column: 1 / -1 !important;
+      align-self: end !important;
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)) !important;
+      grid-auto-rows: 92px !important;
+      gap: 10px !important;
+      min-height: 100px !important;
+      max-height: 104px !important;
+      padding: 4px 6px 6px !important;
+      overflow: visible !important;
+    }
+
+    .garage-thumb {
+      height: 90px !important;
+      min-width: 0 !important;
+      overflow: hidden !important;
+      padding: 5px 8px 6px !important;
+      grid-template-rows: 1fr auto;
+      gap: 2px;
+      color: #fff;
+    }
+
+    .garage-thumb img {
+      width: 86% !important;
+      max-height: 60px !important;
+      object-fit: contain !important;
+      align-self: end;
+    }
+
+    .garage-thumb small {
+      font-size: 11px;
+      font-weight: 950;
+      color: rgba(255, 248, 230, .86);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .garage-thumb.selected {
+      border-color: rgba(255, 236, 128, .95) !important;
+      background: #f2c94c !important;
+      color: #14203a !important;
+    }
+
+    .garage-thumb.selected small {
+      color: #14203a;
+    }
+
+    #character > .topbar,
+    #track > .topbar {
+      display: flex !important;
+      position: absolute !important;
+      left: 22px !important;
+      right: 22px !important;
+      top: 18px !important;
+      padding: 0 !important;
+      z-index: 8 !important;
+      pointer-events: none;
+    }
+
+    #character > .topbar .back,
+    #track > .topbar .back {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+    }
+
+    #character > .topbar .brand-title,
+    #track > .topbar .brand-title {
+      display: none !important;
+    }
+
+    #character > .topbar .top-actions,
+    #track > .topbar .top-actions {
+      margin-left: auto;
+      pointer-events: auto;
+    }
+
     @media (max-width: 900px) {
       body { padding: 0; }
       .app { width: 100vw; height: 100vh; max-height: none; border-radius: 0; aspect-ratio: auto; }
@@ -2888,8 +3246,8 @@
         <div class="main-wire">
           <div class="panel main-currency">货币 85000</div>
           <nav class="panel pad nav-list main-left">
-            <button class="btn primary" data-go="character" data-mode="race">竞速赛</button>
-            <button class="btn blue" data-go="character" data-mode="time">计时赛</button>
+            <button class="btn primary" data-go="prepare" data-mode="race">竞速赛</button>
+            <button class="btn blue" data-go="track" data-mode="time">计时赛</button>
             <button class="btn ghost" data-go="nfc">NFC</button>
             <button class="btn ghost" data-go="leaderboard">排行榜</button>
           </nav>
@@ -2914,7 +3272,7 @@
 
     <section class="screen" id="character">
       <header class="topbar">
-        <button class="back" data-go="main">返回</button>
+        <button class="back" data-back>返回</button>
         <div class="brand-title">角色 / 赛车选择</div>
         <div class="top-actions"><span class="pill">货币 85000</span></div>
       </header>
@@ -2943,14 +3301,14 @@
             <div class="avatar-grid" id="characterList"></div>
             <button class="arrow-btn" data-character-next>›</button>
           </div>
-          <button class="btn primary character-corner-action next-step" data-go="track">下一步</button>
+          <button class="btn primary character-corner-action next-step" data-go="hud">下一步</button>
         </div>
       </div>
     </section>
 
     <section class="screen" id="track">
       <header class="topbar">
-        <button class="back" data-go="character">返回</button>
+        <button class="back" data-back>返回</button>
         <div class="brand-title">冠军之路 / 赛道选择</div>
         <div class="top-actions"><span class="pill" id="trackStarPill">总星级 18/72</span></div>
       </header>
@@ -2961,7 +3319,7 @@
               <h2 class="section-title" style="margin-top:14px">其他赛道<br>元素相同</h2>
             </div>
           </aside>
-          <section class="panel track-main xlsx-frame" data-go="prepare">
+          <section class="panel track-main xlsx-frame" tabindex="0" data-enter-track>
             <div class="track-scene" id="trackScene">
               <div class="track-top-boxes">
                 <div class="track-badge">当前星星收集数量 <b id="trackStarsBox">3/3</b></div>
@@ -2989,7 +3347,7 @@
 
     <section class="screen" id="prepare">
       <header class="topbar">
-        <button class="back" data-go="track">返回</button>
+        <button class="back" data-back>返回</button>
         <div class="brand-title">玩家人数 & 遥控器准备</div>
         <div class="top-actions"><span class="pill">仅支持 Youdoo 遥控器</span></div>
       </header>
@@ -3018,7 +3376,7 @@
 
     <section class="screen" id="difficulty">
       <header class="topbar">
-        <button class="back" data-go="prepare">返回</button>
+        <button class="back" data-back>返回</button>
         <div class="brand-title">难度选择</div>
         <div class="top-actions"><span class="pill">AI 补满 8 人</span></div>
       </header>
@@ -3075,24 +3433,21 @@
 
     <section class="screen" id="result">
       <header class="topbar">
-        <button class="back" data-go="track">返回赛道</button>
+        <button class="back" data-back>返回赛道</button>
         <div class="brand-title">比赛结算</div>
         <div class="top-actions"><span class="pill">新获得 3 星</span></div>
       </header>
       <div class="stage">
         <div class="result-grid">
-          <section class="panel podium">
-            <div class="place"><b>2</b><span>菲菲</span><span class="meta">+150 货币</span></div>
-            <div class="place first"><b>1</b><span id="winnerName">猪猪侠</span><span style="color:var(--yellow); font-size:28px">★★★</span><span class="meta">积分滚动 +200</span></div>
-            <div class="place"><b>3</b><span>超人强</span><span class="meta">+50 货币</span></div>
+          <section class="panel podium result-rank-list" id="resultRankList">
           </section>
           <aside class="panel pad">
             <h2 class="section-title">奖励与出口</h2>
-            <div class="daily-row"><span>历史星级</span><b>3/3</b></div>
-            <div class="daily-row"><span>货币余额</span><b>85200</b></div>
-            <div class="daily-row"><span>最快记录</span><b>02:35.218</b></div>
-            <button class="btn primary" data-go="upgrade">赛车升级</button>
-            <button class="btn blue" data-go="difficulty">再来一局</button>
+            <div class="daily-row"><span id="resultMetricLabel">历史星级</span><b id="resultMetricValue">3/3</b></div>
+            <div class="daily-row"><span>货币余额</span><b id="resultCurrency">85200</b></div>
+            <div class="daily-row"><span>最快记录</span><b id="resultRecord">02:35.218</b></div>
+            <button class="btn primary" data-go="upgrade" id="resultUpgradeBtn">赛车升级</button>
+            <button class="btn blue" data-go="track" id="resultContinueBtn">继续</button>
             <button class="btn ghost" data-go="main">返回主界面</button>
           </aside>
         </div>
@@ -3114,16 +3469,7 @@
           <section class="garage-car">
             <img src="assets/car-3d.png" alt="升级赛车" />
           </section>
-          <div class="garage-actions">
-            <button class="btn primary" data-toast="已打开升级预览">升级</button>
-            <button class="btn blue" data-toast="已打开改装涂装预览">改装</button>
-          </div>
-          <div class="garage-strip">
-            <div class="garage-thumb"><img src="assets/car-3d.png" alt="赛车缩略图" /></div>
-            <div class="garage-thumb"><img src="assets/car-3d.png" alt="赛车缩略图" /></div>
-            <div class="garage-thumb" style="opacity:.45"><b>未解锁</b></div>
-            <div class="garage-thumb" style="opacity:.45"><b>未解锁</b></div>
-          </div>
+          <div class="garage-strip" id="upgradeCarStrip"></div>
         </div>
       </div>
     </section>
@@ -3247,7 +3593,11 @@
       track: 0,
       players: 1,
       difficulty: null,
-      nfcUnlocked: false
+      nfcUnlocked: false,
+      currency: 85000,
+      upgradeReturn: "main",
+      trackCursor: { time: 0, "简单": 0, "普通": 0, "困难": 0 },
+      upgrades: {}
     };
 
     const characters = [
@@ -3280,6 +3630,20 @@
       ["技能冷却", "-1秒", [150,300,600,1000,1600]]
     ];
 
+    const raceProgress = {
+      "简单": [3, 3, 2, 1, 0, 0, 0, 0],
+      "普通": [3, 2, 1, 0, 0, 0, 0, 0],
+      "困难": [3, 1, 0, 0, 0, 0, 0, 0]
+    };
+
+    const difficultyReward = {
+      "简单": [200, 150, 80, 40, 20, 10, 10, 0],
+      "普通": [320, 240, 130, 70, 35, 20, 10, 0],
+      "困难": [500, 360, 220, 120, 70, 40, 20, 0]
+    };
+
+    const aiNames = ["菲菲", "超人强", "小呆呆", "波比", "迷糊老师", "玫瑰公主", "阿五"];
+
     function $(selector) { return document.querySelector(selector); }
     function $all(selector) { return [...document.querySelectorAll(selector)]; }
 
@@ -3292,11 +3656,81 @@
       return index >= 0 ? index : 0;
     }
 
+    function ensureUpgradeData() {
+      characters.forEach((_, index) => {
+        if (!state.upgrades[index]) state.upgrades[index] = [0, 0, 0, 0, 0];
+      });
+    }
+
+    function raceStars(difficulty, trackIndex) {
+      return (raceProgress[difficulty] || raceProgress["简单"])[trackIndex] || 0;
+    }
+
+    function isRaceTrackUnlocked(trackIndex, difficulty = state.difficulty || "简单") {
+      if (trackIndex === 0) return true;
+      return raceStars(difficulty, trackIndex - 1) > 0;
+    }
+
+    function isCurrentTrackUnlocked(trackIndex = state.track) {
+      return state.mode === "time" ? isRaceTrackUnlocked(trackIndex, "简单") : isRaceTrackUnlocked(trackIndex, state.difficulty);
+    }
+
+    function firstUnlockedTrack(difficulty = state.difficulty || "简单") {
+      return tracks.findIndex((_, index) => isRaceTrackUnlocked(index, difficulty));
+    }
+
+    function lastUnlockedTrack(difficulty = state.difficulty || "简单") {
+      let last = 0;
+      tracks.forEach((_, index) => {
+        if (isRaceTrackUnlocked(index, difficulty)) last = index;
+      });
+      return last;
+    }
+
+    function totalRaceStars() {
+      return Object.values(raceProgress).flat().reduce((sum, value) => sum + value, 0);
+    }
+
+    function setMode(mode) {
+      state.mode = mode;
+      if (mode === "race") {
+        state.players = Math.max(1, Math.min(state.players, 4));
+        state.difficulty = null;
+        state.track = state.trackCursor["简单"] || 0;
+      } else {
+        state.players = 1;
+        state.difficulty = null;
+        state.track = state.trackCursor.time || 0;
+      }
+    }
+
+    function backTarget() {
+      if (state.screen === "prepare") return "main";
+      if (state.screen === "difficulty") return "prepare";
+      if (state.screen === "track") return state.mode === "race" ? "difficulty" : "main";
+      if (state.screen === "character") return "track";
+      if (state.screen === "hud") return "character";
+      if (state.screen === "result") return "track";
+      if (state.screen === "upgrade") return state.upgradeReturn || "main";
+      return "main";
+    }
+
+    function updateCurrencyDisplays() {
+      $all(".pill, .main-currency").forEach(el => {
+        if (el.textContent.includes("货币")) el.textContent = `货币 ${state.currency}`;
+      });
+    }
+
     function go(screen) {
+      if (screen === "track" && state.mode === "race" && !state.difficulty) {
+        screen = "difficulty";
+      }
       $all(".screen").forEach(s => s.classList.remove("active"));
       $("#" + screen).classList.add("active");
       state.screen = screen;
       $("#pauseModal").classList.add("hidden");
+      updateCurrencyDisplays();
+      if (screen === "character") renderCharacter();
       if (screen === "track") renderTrack();
       if (screen === "prepare") renderPrepare();
       if (screen === "difficulty") renderDifficulty();
@@ -3306,6 +3740,7 @@
       if (screen === "garage") renderGarage();
       if (screen === "leaderboard") renderRanks();
       if (screen === "nfc") renderNfc();
+      scheduleDefaultFocus();
     }
 
     function renderCharacter() {
@@ -3336,18 +3771,28 @@
       const t = tracks[state.track];
       const prev = tracks[(state.track + tracks.length - 1) % tracks.length];
       const next = tracks[(state.track + 1) % tracks.length];
+      const unlocked = isCurrentTrackUnlocked();
+      const currentStars = state.mode === "race" ? raceStars(state.difficulty, state.track) : 0;
       $("#trackScene").style.backgroundImage = `url('${t.art}')`;
       $("#leftTrackPreview").style.backgroundImage = `url('${prev.art}')`;
       $("#rightTrackPreview").style.backgroundImage = `url('${next.art}')`;
       $("#trackTitle").textContent = `${t.theme} - ${t.name}`;
-      $("#trackMeta").textContent = `${t.id} / ${t.laps}圈 / ${t.diff} / ${t.unlock}`;
-      $("#trackStarsBox").textContent = `${t.stars}/3`;
+      $("#trackMeta").textContent = state.mode === "time"
+        ? `${t.id} / ${t.laps}圈 / 计时赛 / 单人无AI / ${unlocked ? "已解锁" : "随冠军之路解锁"}`
+        : `${t.id} / ${t.laps}圈 / ${state.difficulty || "未选难度"} / ${unlocked ? "已解锁" : "上一赛道前三名解锁"}`;
+      $("#trackStarsBox").textContent = state.mode === "time" ? "单人" : `${currentStars}/3`;
       $("#trackRecordBox").textContent = state.mode === "time" ? "02:35.218" : "02:35";
-      $("#trackStarPill").textContent = `总星级 ${tracks.reduce((sum, x) => sum + x.stars, 0)}/72`;
+      $("#trackStarPill").textContent = state.mode === "time" ? "计时赛 单人" : `总星级 ${totalRaceStars()}/72`;
+      $(".track-main").classList.toggle("locked", !unlocked);
+      $(".unlock-ring").innerHTML = state.mode === "time" ? "计时赛<br>单人<br>无AI" : unlocked ? "积分和<br>赛道绑定<br>3/3才可领" : "未解锁<br>上一关前三<br>后开放";
     }
 
     function renderPrepare() {
       $("#prepareMeta").textContent = `${state.players}P 比赛，主遥控器自动绑定 1P，其余玩家长按确认键加入。`;
+      $all("[data-players]").forEach(button => {
+        button.classList.toggle("selected", Number(button.dataset.players) === state.players);
+        button.classList.toggle("player-choice", true);
+      });
       $("#remoteGrid").innerHTML = [1,2,3,4].map(n => {
         const ready = n <= state.players;
         return `<div class="remote-card ${ready ? "ready" : "wait"}">
@@ -3358,30 +3803,83 @@
     }
 
     function renderDifficulty() {
-      state.difficulty = null;
-      $all("[data-diff]").forEach(el => el.classList.remove("selected"));
+      $all("[data-diff]").forEach(el => el.classList.toggle("selected", el.dataset.diff === state.difficulty));
     }
 
     function renderHud() {
       const t = tracks[state.track];
       $("#hudBg").style.backgroundImage = "";
       $("#lapText").textContent = `第 2 / ${t.laps} 圈`;
-      $("#speedText").textContent = state.difficulty === "困难" ? "184" : state.difficulty === "普通" ? "172" : "158";
+      $(".rank b").textContent = state.mode === "time" ? "1/1" : "1/8";
+      $("#speedText").textContent = state.mode === "time" ? "166" : state.difficulty === "困难" ? "184" : state.difficulty === "普通" ? "172" : "158";
     }
 
     function renderResult() {
-      $("#winnerName").textContent = characters[state.character].name;
+      const t = tracks[state.track];
+      const playerName = characters[state.character].name;
+      if (state.mode === "time") {
+        $("#result .brand-title").textContent = "计时赛结算";
+        $("#result .top-actions .pill").textContent = "新纪录 02:35.218";
+        $("#resultRankList").innerHTML = `
+          <div class="rank-row player"><span class="rank-no">计</span><span>${playerName}<small>${t.name} / 单人计时 / 无AI</small></span><b>02:35.218</b></div>
+          <div class="rank-row"><span class="rank-no">PB</span><span>本地最佳<small>保留本地 Top10，全球 Top100 展示在排行榜</small></span><b>02:35.218</b></div>
+        `;
+        $("#resultMetricLabel").textContent = "比赛类型";
+        $("#resultMetricValue").textContent = "计时赛";
+        $("#resultCurrency").textContent = state.currency;
+        $("#resultRecord").textContent = "02:35.218";
+        $("#resultUpgradeBtn").style.display = "none";
+        $("#resultContinueBtn").textContent = "返回关卡";
+        $("#resultContinueBtn").dataset.go = "track";
+        return;
+      }
+
+      $("#result .brand-title").textContent = "比赛结算";
+      $("#result .top-actions .pill").textContent = "新获得 3 星";
+      const rewards = difficultyReward[state.difficulty] || difficultyReward["简单"];
+      const names = [playerName, ...aiNames].slice(0, 8);
+      $("#resultRankList").innerHTML = names.map((name, index) => {
+        const place = index + 1;
+        const stars = place === 1 ? "★★★" : place === 2 ? "★★" : place === 3 ? "★" : "0星";
+        return `<div class="rank-row ${index === 0 ? "player" : ""}">
+          <span class="rank-no">${place}</span>
+          <span>${name}<small>${index === 0 ? "玩家" : "AI"} / ${stars}</small></span>
+          <b>+${rewards[index]} 货币</b>
+        </div>`;
+      }).join("");
+      $("#resultMetricLabel").textContent = "历史星级";
+      $("#resultMetricValue").textContent = `${raceStars(state.difficulty, state.track)}/3`;
+      $("#resultCurrency").textContent = state.currency;
+      $("#resultRecord").textContent = "02:35.218";
+      $("#resultUpgradeBtn").style.display = "";
+      $("#resultContinueBtn").textContent = "继续";
+      $("#resultContinueBtn").dataset.go = "track";
     }
 
     function renderUpgrade() {
+      ensureUpgradeData();
       $("#upgradeTitle").textContent = characters[state.character].vehicle;
-      $("#upgradeRows").innerHTML = upgradeRows.map((r, i) => `
-        <div class="stat-row" style="grid-template-columns:92px 1fr 54px">
-          <span>${r[0]}<br><small style="color:var(--muted);font-size:10px">${i === 0 ? "TOP SPEED" : i === 1 ? "ACCELERATION" : i === 2 ? "HANDLING" : i === 3 ? "NITRO" : "COOLDOWN"}</small></span>
-          <div class="bar"><i style="width:${62 + i * 6}%"></i></div>
-          <b>Lv.${i % 3 + 1}</b>
+      const levels = state.upgrades[state.character];
+      $("#upgradeRows").innerHTML = upgradeRows.map((r, i) => {
+        const level = levels[i];
+        const cost = r[2][level];
+        const maxed = level >= r[2].length;
+        const disabled = maxed || state.currency < cost;
+        return `<div class="upgrade-row">
+          <span>${r[0]}<br><small style="color:var(--muted);font-size:10px">${r[1]} / 级</small></span>
+          <div class="bar"><i style="width:${32 + level * 13}%"></i></div>
+          <b>Lv.${level}</b>
+          <button class="btn ${disabled ? "ghost" : "primary"}" data-upgrade="${i}" ${disabled ? "disabled" : ""}>${maxed ? "已满级" : cost + " 货币"}</button>
         </div>
-      `).join("");
+      `}).join("");
+      $("#upgradeCarStrip").innerHTML = characters
+        .map((c, i) => ({ ...c, index: i }))
+        .filter(isCharacterUnlocked)
+        .map(c => `<button class="garage-thumb ${c.index === state.character ? "selected" : ""}" data-character="${c.index}">
+          <img src="assets/car-3d.png" alt="${c.vehicle}" />
+          <small>${c.name}</small>
+        </button>`)
+        .join("");
     }
 
     function renderGarage() {
@@ -3391,7 +3889,7 @@
           <div class="tag">${c.type}</div>
           <h2>${c.name}</h2>
           <p class="meta">${c.vehicle} / ${c.role}</p>
-          <button class="btn ${locked ? "ghost" : "primary"}" data-character="${i}" data-go="character">${locked ? "NFC 解锁" : "选择"}</button>
+          <button class="btn ${locked ? "ghost" : "primary"}" data-character="${i}" ${locked ? "data-toast=\"请先到 NFC 页面解锁\"" : "data-go=\"character\""}>${locked ? "NFC 解锁" : "选择"}</button>
         </article>`;
       }).join("");
     }
@@ -3409,16 +3907,114 @@
       $("#nfcList").innerHTML = items;
     }
 
+    function enterSelectedTrack() {
+      if (!isCurrentTrackUnlocked()) {
+        showToast("该赛道未解锁，请先在上一赛道获得前三名");
+        return;
+      }
+      if (state.mode === "race") state.trackCursor[state.difficulty] = state.track;
+      if (state.mode === "time") state.trackCursor.time = state.track;
+      go("character");
+    }
+
+    function stepTrack(direction) {
+      state.track = (state.track + direction + tracks.length) % tracks.length;
+      renderTrack();
+      setRemoteFocus($(".track-main"));
+    }
+
+    function stepCharacter(direction) {
+      const unlocked = characters
+        .map((c, i) => ({ c, i }))
+        .filter(item => isCharacterUnlocked(item.c))
+        .map(item => item.i);
+      const current = unlocked.indexOf(state.character);
+      const next = (current + direction + unlocked.length) % unlocked.length;
+      state.character = unlocked[next];
+      renderCharacter();
+      setRemoteFocus($(".next-step"));
+    }
+
     document.addEventListener("click", event => {
+      if (event.target.closest("[data-back]")) {
+        go(backTarget());
+        return;
+      }
+
+      if (event.target.closest("[data-enter-track]")) {
+        enterSelectedTrack();
+        return;
+      }
+
+      const upgradeTarget = event.target.closest("[data-upgrade]");
+      if (upgradeTarget) {
+        ensureUpgradeData();
+        const index = Number(upgradeTarget.dataset.upgrade);
+        const levels = state.upgrades[state.character];
+        const level = levels[index];
+        const cost = upgradeRows[index][2][level];
+        if (cost == null) return showToast("该项目已满级");
+        if (state.currency < cost) return showToast("货币不足");
+        state.currency -= cost;
+        levels[index] += 1;
+        updateCurrencyDisplays();
+        renderUpgrade();
+        showToast(`${upgradeRows[index][0]} 升级完成`);
+        return;
+      }
+
+      if (event.target.closest("[data-character-prev]") || event.target.closest("[data-character-next]")) {
+        const dir = event.target.closest("[data-character-prev]") ? -1 : 1;
+        stepCharacter(dir);
+        return;
+      }
+
+      if (event.target.closest("[data-track-prev]")) {
+        stepTrack(-1);
+        return;
+      }
+
+      if (event.target.closest("[data-track-next]")) {
+        stepTrack(1);
+        return;
+      }
+
+      const players = event.target.closest("[data-players]");
+      if (players) {
+        state.players = Number(players.dataset.players);
+        renderPrepare();
+        scheduleDefaultFocus(`[data-players="${state.players}"]`);
+        return;
+      }
+
+      const diff = event.target.closest("[data-diff]");
+      if (diff) {
+        state.difficulty = diff.dataset.diff;
+        renderDifficulty();
+      }
+
+      if (event.target.closest("[data-start-race]")) {
+        if (!state.difficulty) return showToast("请先选择难度");
+        state.track = Math.min(state.trackCursor[state.difficulty] || 0, lastUnlockedTrack(state.difficulty));
+        go("track");
+        return;
+      }
+
       const goTarget = event.target.closest("[data-go]");
       if (goTarget) {
-        if (goTarget.dataset.mode) state.mode = goTarget.dataset.mode;
+        if (goTarget.dataset.mode) setMode(goTarget.dataset.mode);
         if (goTarget.dataset.character) {
           const index = Number(goTarget.dataset.character);
-          if (!isCharacterUnlocked(characters[index])) return go("nfc");
+          if (!isCharacterUnlocked(characters[index])) return showToast("该角色需要 NFC 解锁");
           state.character = index;
         }
+        if (goTarget.dataset.go === "upgrade") state.upgradeReturn = state.screen;
+        if (goTarget.dataset.go === "result" && state.mode === "race") {
+          const reward = (difficultyReward[state.difficulty] || difficultyReward["简单"])[0];
+          state.currency += reward;
+        }
         go(goTarget.dataset.go);
+        return;
       }
 
       const character = event.target.closest("[data-character]");
@@ -3426,64 +4022,182 @@
         const index = Number(character.dataset.character);
         if (!isCharacterUnlocked(characters[index])) return;
         state.character = index;
-        renderCharacter();
-      }
-
-      if (event.target.closest("[data-character-prev]") || event.target.closest("[data-character-next]")) {
-        const unlocked = characters
-          .map((c, i) => ({ c, i }))
-          .filter(item => isCharacterUnlocked(item.c))
-          .map(item => item.i);
-        const current = unlocked.indexOf(state.character);
-        const dir = event.target.closest("[data-character-prev]") ? -1 : 1;
-        const next = (current + dir + unlocked.length) % unlocked.length;
-        state.character = unlocked[next];
-        renderCharacter();
+        if (state.screen === "upgrade") renderUpgrade();
+        else renderCharacter();
+        scheduleDefaultFocus("[data-character='" + state.character + "']");
+        return;
       }
 
       const track = event.target.closest("[data-track]");
       if (track) {
         state.track = Number(track.dataset.track);
         renderTrack();
+        return;
       }
 
-      if (event.target.closest("[data-track-prev]")) {
-        state.track = (state.track + tracks.length - 1) % tracks.length;
-        renderTrack();
-      }
-
-      if (event.target.closest("[data-track-next]")) {
-        state.track = (state.track + 1) % tracks.length;
-        renderTrack();
-      }
-
-      const players = event.target.closest("[data-players]");
-      if (players) {
-        state.players = Number(players.dataset.players);
-        renderPrepare();
-      }
-
-      const diff = event.target.closest("[data-diff]");
-      if (diff) {
-        state.difficulty = diff.dataset.diff;
-        $all("[data-diff]").forEach(el => el.classList.remove("selected"));
-        diff.classList.add("selected");
-      }
-
-      if (event.target.closest("[data-start-race]")) go("hud");
       if (event.target.closest("[data-pause]")) {
         $("#pauseModal").classList.remove("hidden");
+        scheduleDefaultFocus();
+        return;
       }
-      if (event.target.closest("[data-resume]")) $("#pauseModal").classList.add("hidden");
-      if (event.target.closest("[data-finish]")) go("result");
+      if (event.target.closest("[data-resume]")) {
+        $("#pauseModal").classList.add("hidden");
+        scheduleDefaultFocus();
+        return;
+      }
       const toastTarget = event.target.closest("[data-toast]");
       if (toastTarget) showToast(toastTarget.dataset.toast);
       if (event.target.closest("[data-unlock-nfc]")) {
         state.nfcUnlocked = true;
         renderNfc();
         renderCharacter();
+        showToast("NFC 角色已加入角色选择列表");
       }
 
+    });
+
+    const focusSelector = "button:not([disabled]), input, [tabindex]:not([tabindex='-1'])";
+
+    function activeRoot() {
+      const modal = $("#pauseModal");
+      return modal && !modal.classList.contains("hidden") ? modal : $(".screen.active");
+    }
+
+    function visibleFocusable() {
+      const root = activeRoot();
+      if (!root) return [];
+      return $all(focusSelector)
+        .filter(el => root.contains(el))
+        .filter(el => !(state.screen === "track" && el.matches("[data-track-prev], [data-track-next]")))
+        .filter(el => !(state.screen === "character" && el.matches("[data-character-prev], [data-character-next]")))
+        .filter(el => {
+          const rect = el.getBoundingClientRect();
+          const style = getComputedStyle(el);
+          return rect.width > 0 && rect.height > 0 && style.visibility !== "hidden" && style.display !== "none";
+        });
+    }
+
+    function setRemoteFocus(el) {
+      $all(".remote-focus").forEach(item => {
+        item.classList.remove("remote-focus");
+        if (item.dataset.remotePainted === "true") {
+          item.style.removeProperty("background");
+          item.style.removeProperty("background-color");
+          item.style.removeProperty("background-image");
+          item.style.removeProperty("color");
+          item.style.removeProperty("text-shadow");
+          delete item.dataset.remotePainted;
+        }
+      });
+      if (!el) return;
+      el.classList.add("remote-focus");
+      if (el.matches("button, .btn, .back, .arrow-btn, .track-arrow, .avatar, .garage-thumb, .task-status, .difficulty-select-btn")) {
+        el.style.setProperty("background", "#f2c94c", "important");
+        el.style.setProperty("background-color", "#f2c94c", "important");
+        el.style.setProperty("background-image", "none", "important");
+        el.style.setProperty("color", "#14203a", "important");
+        el.style.setProperty("text-shadow", "none", "important");
+        el.dataset.remotePainted = "true";
+      }
+      if (typeof el.focus === "function") el.focus({ preventScroll: true });
+    }
+
+    function defaultFocusTarget(selector) {
+      const root = activeRoot();
+      if (!root) return null;
+      if (selector) {
+        const target = root.querySelector(selector);
+        if (target) return target;
+      }
+      if (state.screen === "main") return root.querySelector("[data-mode='race']");
+      if (state.screen === "prepare") return root.querySelector(`[data-players="${state.players}"]`);
+      if (state.screen === "difficulty") return root.querySelector(state.difficulty ? `[data-diff="${state.difficulty}"] .difficulty-select-btn` : ".difficulty-select-btn");
+      if (state.screen === "track") return root.querySelector("[data-enter-track]");
+      if (state.screen === "character") return root.querySelector(".next-step");
+      if (state.screen === "hud") return root.querySelector(".finish-round-btn");
+      if (state.screen === "result") return root.querySelector("#resultContinueBtn");
+      if (state.screen === "upgrade") return root.querySelector("[data-upgrade]:not([disabled])") || root.querySelector("[data-back]");
+      return root.querySelector(focusSelector);
+    }
+
+    function scheduleDefaultFocus(selector) {
+      requestAnimationFrame(() => setRemoteFocus(defaultFocusTarget(selector)));
+    }
+
+    function moveFocus(direction) {
+      const items = visibleFocusable();
+      if (!items.length) return;
+      let current = $(".remote-focus");
+      if (!current || !items.includes(current)) {
+        setRemoteFocus(defaultFocusTarget());
+        return;
+      }
+      const currentRect = current.getBoundingClientRect();
+      const cx = currentRect.left + currentRect.width / 2;
+      const cy = currentRect.top + currentRect.height / 2;
+      let best = null;
+      let bestScore = Infinity;
+      items.forEach(item => {
+        if (item === current) return;
+        const rect = item.getBoundingClientRect();
+        const ix = rect.left + rect.width / 2;
+        const iy = rect.top + rect.height / 2;
+        const dx = ix - cx;
+        const dy = iy - cy;
+        if (direction === "left" && dx >= -4) return;
+        if (direction === "right" && dx <= 4) return;
+        if (direction === "up" && dy >= -4) return;
+        if (direction === "down" && dy <= 4) return;
+        const primary = direction === "left" || direction === "right" ? Math.abs(dx) : Math.abs(dy);
+        const secondary = direction === "left" || direction === "right" ? Math.abs(dy) : Math.abs(dx);
+        const score = primary + secondary * .65;
+        if (score < bestScore) {
+          best = item;
+          bestScore = score;
+        }
+      });
+      if (best) setRemoteFocus(best);
+    }
+
+    document.addEventListener("keydown", event => {
+      const keyMap = {
+        ArrowLeft: "left", a: "left", A: "left",
+        ArrowRight: "right", d: "right", D: "right",
+        ArrowUp: "up", w: "up", W: "up",
+        ArrowDown: "down", s: "down", S: "down"
+      };
+      if (keyMap[event.key]) {
+        event.preventDefault();
+        if (state.screen === "track" && (keyMap[event.key] === "left" || keyMap[event.key] === "right")) {
+          stepTrack(keyMap[event.key] === "left" ? -1 : 1);
+          return;
+        }
+        if (state.screen === "character" && (keyMap[event.key] === "left" || keyMap[event.key] === "right")) {
+          stepCharacter(keyMap[event.key] === "left" ? -1 : 1);
+          return;
+        }
+        moveFocus(keyMap[event.key]);
+        return;
+      }
+      if (event.key === "Enter" || event.key === " ") {
+        const current = $(".remote-focus") || defaultFocusTarget();
+        if (current) {
+          event.preventDefault();
+          current.click();
+        }
+        return;
+      }
+      if (event.key === "Escape" || event.key === "Backspace") {
+        event.preventDefault();
+        go(backTarget());
+      }
+    });
+
+    document.addEventListener("pointerover", event => {
+      const target = event.target.closest(focusSelector);
+      if (state.screen === "track" && target?.matches("[data-track-prev], [data-track-next]")) return;
+      if (state.screen === "character" && target?.matches("[data-character-prev], [data-character-next]")) return;
+      if (target && activeRoot()?.contains(target)) setRemoteFocus(target);
     });
 
     let toastTimer = 0;
@@ -3495,10 +4209,13 @@
       toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
     }
 
+    ensureUpgradeData();
+    updateCurrencyDisplays();
     renderCharacter();
     renderTrack();
     renderPrepare();
     renderNfc();
+    scheduleDefaultFocus();
   </script>
 </body>
 </html>
