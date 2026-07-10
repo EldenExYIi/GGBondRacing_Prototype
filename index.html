@@ -2994,6 +2994,40 @@
       text-shadow: none !important;
     }
 
+    .main-setting-corner.remote-focus,
+    .main-setting-corner.remote-focus:hover,
+    .main-setting-corner.remote-focus:focus-visible {
+      overflow: visible !important;
+      border-radius: 50% !important;
+      border-image: none !important;
+      outline: none !important;
+    }
+
+    .main-setting-corner.remote-focus::after {
+      content: "";
+      position: absolute;
+      inset: -13px;
+      z-index: -1;
+      border-radius: 50%;
+      padding: 5px;
+      pointer-events: none;
+      background: conic-gradient(
+        from var(--focusBorderSpin),
+        transparent 0deg 28deg,
+        #00e7ff 28deg 112deg,
+        transparent 112deg 194deg,
+        #ff3f73 194deg 278deg,
+        transparent 278deg 360deg
+      );
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      filter: drop-shadow(0 0 5px rgba(0, 231, 255, .82));
+      animation: remoteFocusBorderRun 1.15s linear infinite;
+    }
+
     .choice-card.locked,
     .track-main.locked {
       opacity: .68;
@@ -3112,12 +3146,18 @@
       padding: 6px 8px !important;
       grid-template-columns: 82px 1fr 58px 96px !important;
       gap: 8px !important;
+      cursor: pointer;
     }
 
     #upgrade .upgrade-row .btn {
       min-height: 38px !important;
       font-size: 12px !important;
       padding: 4px 8px !important;
+    }
+
+    #upgrade .upgrade-row.selected {
+      border-color: rgba(255, 236, 128, .96) !important;
+      background: rgba(242, 201, 76, .22);
     }
 
     #upgrade .garage-car {
@@ -3807,6 +3847,7 @@
       nfcUnlocked: false,
       currency: 85000,
       upgradeReturn: "main",
+      upgradeAttr: 0,
       trackCursor: { time: 0, "简单": 0, "普通": 0, "困难": 0 },
       upgrades: {}
     };
@@ -4115,6 +4156,7 @@
 
     function renderUpgrade() {
       ensureUpgradeData();
+      state.upgradeAttr = Math.max(0, Math.min(state.upgradeAttr, upgradeRows.length - 1));
       $("#upgradeTitle").textContent = characters[state.character].vehicle;
       const levels = state.upgrades[state.character];
       $("#upgradeRows").innerHTML = upgradeRows.map((r, i) => {
@@ -4122,7 +4164,7 @@
         const cost = r[2][level];
         const maxed = level >= r[2].length;
         const disabled = maxed || state.currency < cost;
-        return `<div class="upgrade-row">
+        return `<div class="upgrade-row ${i === state.upgradeAttr ? "selected" : ""}" tabindex="0" data-upgrade-row="${i}">
           <span>${r[0]}<br><small style="color:var(--muted);font-size:10px">${r[1]} / 级</small></span>
           <div class="bar"><i style="width:${32 + level * 13}%"></i></div>
           <b>Lv.${level}</b>
@@ -4188,8 +4230,41 @@
       const current = unlocked.indexOf(state.character);
       const next = (current + direction + unlocked.length) % unlocked.length;
       state.character = unlocked[next];
-      renderCharacter();
-      setRemoteFocus($(".next-step"));
+      if (state.screen === "upgrade") {
+        renderUpgrade();
+        setRemoteFocus($(`[data-upgrade-row="${state.upgradeAttr}"]`));
+      } else {
+        renderCharacter();
+        setRemoteFocus($(".next-step"));
+      }
+    }
+
+    function stepUpgradeAttr(direction) {
+      state.upgradeAttr = (state.upgradeAttr + direction + upgradeRows.length) % upgradeRows.length;
+      renderUpgrade();
+      setRemoteFocus($(`[data-upgrade-row="${state.upgradeAttr}"]`));
+    }
+
+    function upgradeSelectedStat(index = state.upgradeAttr) {
+      ensureUpgradeData();
+      state.upgradeAttr = Math.max(0, Math.min(index, upgradeRows.length - 1));
+      const levels = state.upgrades[state.character];
+      const level = levels[state.upgradeAttr];
+      const cost = upgradeRows[state.upgradeAttr][2][level];
+      if (cost == null) {
+        setRemoteFocus($(`[data-upgrade-row="${state.upgradeAttr}"]`));
+        return showToast("该项目已满级");
+      }
+      if (state.currency < cost) {
+        setRemoteFocus($(`[data-upgrade-row="${state.upgradeAttr}"]`));
+        return showToast("货币不足");
+      }
+      state.currency -= cost;
+      levels[state.upgradeAttr] += 1;
+      updateCurrencyDisplays();
+      renderUpgrade();
+      setRemoteFocus($(`[data-upgrade-row="${state.upgradeAttr}"]`));
+      showToast(`${upgradeRows[state.upgradeAttr][0]} 升级完成`);
     }
 
     document.addEventListener("click", event => {
@@ -4205,18 +4280,15 @@
 
       const upgradeTarget = event.target.closest("[data-upgrade]");
       if (upgradeTarget) {
-        ensureUpgradeData();
-        const index = Number(upgradeTarget.dataset.upgrade);
-        const levels = state.upgrades[state.character];
-        const level = levels[index];
-        const cost = upgradeRows[index][2][level];
-        if (cost == null) return showToast("该项目已满级");
-        if (state.currency < cost) return showToast("货币不足");
-        state.currency -= cost;
-        levels[index] += 1;
-        updateCurrencyDisplays();
+        upgradeSelectedStat(Number(upgradeTarget.dataset.upgrade));
+        return;
+      }
+
+      const upgradeRow = event.target.closest("[data-upgrade-row]");
+      if (upgradeRow) {
+        state.upgradeAttr = Number(upgradeRow.dataset.upgradeRow);
         renderUpgrade();
-        showToast(`${upgradeRows[index][0]} 升级完成`);
+        setRemoteFocus($(`[data-upgrade-row="${state.upgradeAttr}"]`));
         return;
       }
 
@@ -4373,7 +4445,7 @@
       if (state.screen === "character") return root.querySelector(".next-step");
       if (state.screen === "hud") return root.querySelector(".finish-round-btn");
       if (state.screen === "result") return root.querySelector("#resultContinueBtn");
-      if (state.screen === "upgrade") return root.querySelector("[data-upgrade]:not([disabled])") || root.querySelector("[data-back]");
+      if (state.screen === "upgrade") return root.querySelector(`[data-upgrade-row="${state.upgradeAttr}"]`);
       return root.querySelector(focusSelector);
     }
 
@@ -4433,6 +4505,14 @@
           stepCharacter(keyMap[event.key] === "left" ? -1 : 1);
           return;
         }
+        if (state.screen === "upgrade") {
+          if (keyMap[event.key] === "left" || keyMap[event.key] === "right") {
+            stepCharacter(keyMap[event.key] === "left" ? -1 : 1);
+          } else {
+            stepUpgradeAttr(keyMap[event.key] === "up" ? -1 : 1);
+          }
+          return;
+        }
         moveFocus(keyMap[event.key]);
         return;
       }
@@ -4440,6 +4520,10 @@
         const current = $(".remote-focus") || defaultFocusTarget();
         if (current) {
           event.preventDefault();
+          if (state.screen === "upgrade" && current.matches("[data-upgrade-row]")) {
+            upgradeSelectedStat(Number(current.dataset.upgradeRow));
+            return;
+          }
           current.click();
         }
         return;
